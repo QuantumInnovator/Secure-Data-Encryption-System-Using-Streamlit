@@ -1,12 +1,11 @@
 # 🛡️ Python Assignment: Secure Data Encryption System Using Streamlit
-
 import streamlit as st 
 import hashlib
 import json
-import os 
+import os
 import time 
 from cryptography.fernet import Fernet
-from base64 import urlsafe_b64decode
+from base64 import urlsafe_b64encode
 from hashlib import pbkdf2_hmac
 
 # 🔐 Data Information of user 🔐
@@ -37,8 +36,8 @@ def save_data(data):
         json.dump(data, f)        
 
 def generate_key(passkey):
-    key = pbkdf2_hmac('sha256' , passkey.encode(), SALT, 100000)
-    return urlsafe_b64decode(key)        
+    key = pbkdf2_hmac('sha256', passkey.encode(), SALT, 100000)
+    return urlsafe_b64encode(key)  # Return the base64 encoded key directly
 
 def hash_password(password):
     return hashlib.pbkdf2_hmac('sha256',password.encode(),SALT,100000).hex()
