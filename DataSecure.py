@@ -58,7 +58,7 @@ stored_data = load_data()
 
 # 🧭 Navigation Bar 🧭
 st.title("🛡️ Secure Data Encryption System")
-menu = ["🏠 Home","📝 Register","🔒 Login","💾 Store Data","📥 Retrieve Data","🗑️ Delete Data","ℹ️ About"] 
+menu = ["🏠 Home","📝 Register","🔒 Login","💾 Store Data","📥 Retrieve Data","ℹ️ About"] 
 choice = st.sidebar.selectbox("Navigation",menu)
 
 if choice == "🏠 Home":
@@ -115,6 +115,7 @@ elif choice == "🔒 Login":
                 st.error("⚠️ Too many attempts. Locked for 60 seconds")
 
 # 💾 DATA STORING SECTION 💾
+# 💾 DATA STORING SECTION 💾
 elif choice == "💾 Store Data":
     if not st.session_state.authenticated_user:
         st.warning("⚠️ Please login first")
@@ -132,7 +133,7 @@ elif choice == "💾 Store Data":
                 st.success("🎉 Data encrypted and saved successfully")     
             else:
                 st.error("❌ All fields are required to fill") 
-
+  
 
 # 📥 Data retrieve data section 📥
 elif choice == "📥 Retrieve Data":
