@@ -125,12 +125,14 @@ elif choice == "💾 Store Data":
 
         if st.button("Encrypt and Save"):
             if data and password:
-                encrypted = encrypt_text(data,password)
+                key = generate_key(password)  # ✅ FIXED HERE
+                encrypted = encrypt_text(data, key)  # ✅ PASSED CORRECT key
                 stored_data[st.session_state.authenticated_user]["data"].append(encrypted)
                 save_data(stored_data)
                 st.success("🎉 Data encrypted and saved successfully")     
             else:
-                st.error("❌ All fields are required to fill")         
+                st.error("❌ All fields are required to fill") 
+
 
 # 📥 Data retrieve data section 📥
 elif choice == "📥 Retrieve Data":
